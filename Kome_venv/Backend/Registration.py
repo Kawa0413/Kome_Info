@@ -1,10 +1,9 @@
-from flask import Flask, render_template, request, jsonify, Response
+from flask import Flask, request, jsonify
 from flask_cors import CORS
 from pymongo import MongoClient
 from bson.objectid import ObjectId
 import json
 import os
-#render_template,Responseいらん(後々必要になるかも)
 #CORSで同一制限元ポリシーの制限緩める
 #bson.objectidでデータ更新
 
@@ -34,7 +33,7 @@ def add_Drama():
     name = data.get('name', None)
     memo = data.get('memo', None)
     Data.insert_one({'name': name, 'memo': memo})
-    #insertは廃止されてるっぽい
+    #insertだけでなくinsert_one
     # Insert後再検索をかける
     for s in Data.find():
         _id = str(s['_id'])

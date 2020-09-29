@@ -1,10 +1,3 @@
-
-//import Vue from 'vue'
-//import VueRouter from "vue-router"
-
-//Vue.use(VueRouter)
-
-
 //1.ルートコンポーネントを定義
 const Registration_Field = {template: `<regist-field></regist-field>`}
 const Reservation_Field = { template: `<reserve-field></reserve-field>` }

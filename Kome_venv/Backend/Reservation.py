@@ -7,7 +7,6 @@ import requests
 import locale
 import json
 import os
-#render_template,Responseいらん(後々必要になるかも)
 #CORSで同一制限元ポリシーの制限緩める
 #bson.objectidでデータ更新
 
@@ -73,7 +72,7 @@ def add_Drama():
     Data.insert_one({'name': name, 'day': day})
     #lineに通知いった時にも日本語化されるようにするためのline_airdate
     line_airdate = datetime.strftime(day, '%Y年%m月%d日 %H時%M分')
-    #insertは廃止されてるっぽい
+    #insertだけでなくinsert_one
     # Insert後再検索をかける
     for s in Data.find():
         _id = str(s['_id'])
