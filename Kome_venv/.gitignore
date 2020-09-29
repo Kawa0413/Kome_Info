@@ -1,0 +1,5 @@
+Lib/
+node_modules/
+Scripts/
+package-lock.json
+pyvenv.cfg

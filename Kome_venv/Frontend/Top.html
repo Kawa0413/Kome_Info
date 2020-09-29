@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang = "ja">
+    <head>
+        <script type = "Javascript"></script>
+        <meta charset = "UTF-8">
+        <title>Kome.Info</title>
+        <script src="js/vue.min.js"></script>
+        <script src="js/axios.min.js"></script>
+        <!--script src="https://unpkg.com/vue/dist/vue.js"></script-->
+        <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+        <sript src = "js/Registration_Field.js"></script>
+
+    </head>
+    <body>
+        <style>
+            header { 
+                background-image: url(./img/kome_info.jpeg);
+                /* 背景画像を透過度0.5の白でやや背景を明るくしてやることで半透明に */
+                background-color:rgba(255,255,255,0.5);
+                background-blend-mode:lighten;
+                color: #00a0dc
+                }
+            a {
+            
+                padding-right: 80px;
+                width:700px;
+                /* margin-right: auto;
+                margin-left : auto; */
+                }
+            h2{color: #00a0dc}
+
+        </style>
+
+        <div id="app" v-cloak>
+            <header>
+                <h1>Kome.Info</h1>
+                <!-- <hr /> -->
+                <!-- replaceとかつけてたけどいらん -->
+                <router-link to="/Registration_Field">Registration</router-link>
+                <router-link to="/Reservation_Field">Reservation</router-link>
+               
+                <hr />
+            </header>
+            <router-view></router-view>
+
+
+        </div>
+        <!-- 動作の後からインポートしてやらんと行けないｊｓファイルもある ,あとtypeも要る-->
+        <script src="Top.js"></script>
+        <script type="text/javascript" src="js/Registration_Field.js"></script>
+        <script type="text/javascript" src="js/Reservation_Field.js"></script>
+
+
+
+
+        
+    </body>
+</html>
