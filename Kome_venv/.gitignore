@@ -1,5 +1,6 @@
 Lib/
 node_modules/
 Scripts/
+config/
 package-lock.json
 pyvenv.cfg
