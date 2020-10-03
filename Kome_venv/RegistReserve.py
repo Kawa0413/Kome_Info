@@ -1,10 +1,10 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, render_template, jsonify
 from flask_cors import CORS
 from pymongo import MongoClient
 from bson.objectid import ObjectId
 from datetime import datetime
 import requests
-import locale
+#import locale
 import json
 import os
 #CORSで同一制限元ポリシーの制限緩める
@@ -33,23 +33,65 @@ class Line_bot:
         post = requests.post(self._api, headers = self._headers, params=payload)
 
             
-
-
-
-
 #Flaskクラスのインスタンス作ってapp(変数)に代入
 app = Flask(__name__)
-client = MongoClient("localhost:27017")
+client = MongoClient("MONGODB_URL")
 db = client.Kome_Info
 CORS(app)
 
 #日本語以外のwindowsにて日本語をエンコードするため
-locale.setlocale(locale.LC_CTYPE, "Japanese_Japan.932")
+#locale.setlocale(locale.LC_CTYPE, "Japanese_Japan.932")
 
+@app.route("/")
+def init():
+    return render_template('Top.html')
 
-
-@app.route('/', methods=['GET'])
+#Registration関連の動作
+@app.route('/forcollection1', methods=['GET'])
 def get_all_Drama():
+    Data = db.registration
+    output = []
+    for s in Data.find():
+        _id = str(s['_id'])
+        output.append({'_id': _id, 'name': s['name'], 'memo': s['memo']})
+    return jsonify({'result': output})
+
+
+@app.route('/forcollection1', methods=['POST'])
+def add_Drama():
+    Data = db.registration
+    output = []
+    #json形式で書かれているのでflaskリクエストで受信したデータを取得するためのrequest.get_json
+    data = request.get_json(force=True)
+    name = data.get('name', None)
+    memo = data.get('memo', None)
+    Data.insert_one({'name': name, 'memo': memo})
+    #insertだけでなくinsert_one
+    # Insert後再検索をかける
+    for s in Data.find():
+        _id = str(s['_id'])
+        output.append({'_id': _id, 'name': s['name'], 'memo': s['memo']})
+    return jsonify({'result': output})
+
+
+@app.route('/forcollection1', methods=['PUT'])
+def update_Drama():
+    Data = db.registration
+    output = []
+    data = request.get_json(force=True)
+    _id = data.get('id', None)
+    name = data.get('name', None)
+    memo = data.get('memo', None)
+    Data.update_one({'_id':ObjectId(_id)},{'$set':{'name': name,'memo': memo}}, upsert = False)
+    # Update後再検索をかける
+    for s in Data.find():
+        _id = str(s['_id'])
+        output.append({'_id': _id, 'name': s['name'], 'memo': s['memo']})
+    return jsonify({'result': output})
+
+#Reservation関連の動作
+@app.route('/forcollection2', methods=['GET'])
+def get_all_Drama2():
     Data = db.reservation
     output = []
     for s in Data.find():
@@ -59,8 +101,8 @@ def get_all_Drama():
     return jsonify({'result': output})
 
 #strptimeで文字列を日付と変換してDB登録、strftimeで日付を文字列として表示
-@app.route('/', methods=['POST'])
-def add_Drama():
+@app.route('/forcollection2', methods=['POST'])
+def add_Drama2():
     Data = db.reservation
     output = []
     #json形式で書かれているのでflaskリクエストで受信したデータを取得するためのrequest.get_json
@@ -89,8 +131,8 @@ def add_Drama():
     return jsonify({'result': output})
 
 
-@app.route('/', methods=['PUT'])
-def update_Drama():
+@app.route('/forcollection2', methods=['PUT'])
+def update_Drama2():
     Data = db.reservation
     output = []
     data = request.get_json(force=True)
@@ -120,6 +162,7 @@ def update_Drama():
 #__name__はpython ～.pyとして実行したときのみ__main__になる
 #デバッグ出力機能有効にするのも忘れずに
 if __name__ == '__main__':
+    #app.run(debug = True)
     #with Line_bot():
     app.debug = True
-    app.run(host='0.0.0.0', port=5001)
+    app.run(host='0.0.0.0', port=int(os.environ['PORT']))
