@@ -1,4 +1,4 @@
-const APIROOT = 'http://localhost:5000/forcollection1'
+const APIROOT = '/forcollection1'
 Vue.component('regist-field', {
     props: ['records'],
     methods: {
