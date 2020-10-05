@@ -34,7 +34,7 @@ class Line_bot:
 
             
 #Flaskクラスのインスタンス作ってapp(変数)に代入
-app = Flask(__name__)
+app = Flask(__name__, static_folder='img')
 client = MongoClient("MONGODB_URL")
 db = client.Kome_Info
 CORS(app)
