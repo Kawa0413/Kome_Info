@@ -1,4 +1,4 @@
-const APIGET = 'http://localhost:' + port + '/forcollection2'
+const APIGET = 'http://localhost:' + location.port + '/forcollection2'
 Vue.component('reserve-field', {
     props: ['records'],
     methods: {
