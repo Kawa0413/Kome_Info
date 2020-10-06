@@ -7,7 +7,7 @@ Vue.component('regist-field', {
         },
     },
 
-    //この下にdata,methodを入れる
+    //この下にdata,methodを入れよう
 
     data: () => ({
         message: '',
