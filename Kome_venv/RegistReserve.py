@@ -7,7 +7,7 @@ import requests
 #import locale
 import json
 import os
-from dotenv import load_dotenv
+from python-dotenv import load_dotenv
 
 
 #load_envでファイルの中身を読み込む
