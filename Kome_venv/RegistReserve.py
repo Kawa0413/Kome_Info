@@ -48,7 +48,7 @@ class Line_bot:
             
 #Flaskクラスのインスタンス作ってapp(変数)に代入
 app = Flask(__name__, static_folder='Frontend')
-client = MongoClient("mongodb+srv://Kome:Hikaru0721@komeinfo.mmmm6.mongodb.net/admin?authSource=admin&replicaSet=atlas-214nbh-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true")
+client = MongoClient("PWD")
 #mongodb+srv://Kome:*****@komeinfo.mmmm6.mongodb.net/admin?authSource=admin&replicaSet=atlas-214nbh-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true
 #client = MongoClient("MONGODB_URL")mongodb://127.0.0.1:27017/Kome_Info
 db = client.Kome_Info
