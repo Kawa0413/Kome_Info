@@ -15,7 +15,7 @@ from dotenv import load_dotenv
 
 load_dotenv(verbose=True)
 
-dotenv_path = join(dirname(__file__), '.env')
+dotenv_path = join(dirname(__file__, 1), '/config/.env')
 load_dotenv(dotenv_path)
 # #MONGODB_URLを読み込む
 PWD = os.environ.get("MONGODB_URL")
