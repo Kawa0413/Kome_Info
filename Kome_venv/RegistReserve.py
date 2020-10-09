@@ -13,13 +13,12 @@ from dotenv import load_dotenv
 
 #load_envでファイルの中身を読み込む
 
-load_dotenv(verbose=True)
+#load_dotenv(verbose=True)
 
 dotenv_path = join(dirname(__file__), 'config', '.env')
 load_dotenv(dotenv_path)
 # #MONGODB_URLを読み込む
 PWD = os.environ.get("MONGODB_URL")
-
 
 #CORSで同一制限元ポリシーの制限緩める
 #bson.objectidでデータ更新
