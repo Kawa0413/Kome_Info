@@ -18,6 +18,8 @@ dotenv_path = join(dirname(__file__), '.env')
 load_dotenv(dotenv_path)
 # #MONGODB_URLを読み込む
 PWD = os.environ.get("MONGODB_URL")
+print("test")
+print(PWD)
 
 #CORSで同一制限元ポリシーの制限緩める
 #bson.objectidでデータ更新
