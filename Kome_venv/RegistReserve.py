@@ -4,7 +4,6 @@ from pymongo import MongoClient
 from bson.objectid import ObjectId
 from datetime import datetime
 import requests
-#import locale
 import json
 import os
 
@@ -41,13 +40,8 @@ class Line_bot:
 #Flaskクラスのインスタンス作ってapp(変数)に代入
 app = Flask(__name__, static_folder='Frontend')
 client = MongoClient(PWD)
-#mongodb+srv://Kome:*****@komeinfo.mmmm6.mongodb.net/admin?authSource=admin&replicaSet=atlas-214nbh-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true
-#client = MongoClient("MONGODB_URL")mongodb://127.0.0.1:27017/Kome_Info
 db = client.Kome_Info
 CORS(app)
-
-#日本語以外のwindowsにて日本語をエンコードするため
-#locale.setlocale(locale.LC_CTYPE, "Japanese_Japan.932")
 
 @app.route("/")
 def init():
@@ -169,8 +163,6 @@ def update_Drama2():
 #__name__はpython ～.pyとして実行したときのみ__main__になる
 #デバッグ出力機能有効にするのも忘れずに
 if __name__ == '__main__':
-    #app.run(debug = True)
-    #with Line_bot():
     app.debug = True
     port = int(os.environ.get("PORT", 5050))
     app.run(host='0.0.0.0', port=port)

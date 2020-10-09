@@ -4,4 +4,3 @@ Scripts/
 config/
 package-lock.json
 pyvenv.cfg
-.env
