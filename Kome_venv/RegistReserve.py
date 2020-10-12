@@ -19,7 +19,7 @@ class Line_bot:
     def __init__(self):
         #発行したトークンをセットする
         self._api = "https://notify-api.line.me/api/notify"
-        self._token = "SoNMrPc66LKFJdr4YUTmrAGGyBMLLT4x9iPnPIOtMK8"
+        self._token = os.environ.get("LINE_TOKEN")
         self._headers = {"Authorization" : "Bearer "+ self._token}
 
     def bot1(self,line):
