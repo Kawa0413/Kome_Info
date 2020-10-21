@@ -1,0 +1,39 @@
+#Kome_Info
+
+##概要
+過去に見たドラマこれから見るドラマの一覧表示、保存アプリ、
+これから見るドラマの記録または修正をすると自分のLINENotifyに通知が行くように設定
+
+##操作
+* Registration:これまでにみたドラマタイトルと感想などのメモの保存、一覧表示
+* Reservation: これから見るドラマタイトルと時間の保存、一覧表示、保存(修正の場合も)すると自分のLINENotifyに通知
+* CLEAR: 入力欄と表示している場合入力欄に加えて一覧を初期化してwebページを開いた時の状態に戻す
+* GET: 一覧を表示
+* ADD: 入力したドラマタイトルとメモまたは日時を一覧に加える
+* FIX: 入力欄に修正した内容を入力した後にボタンを押すとその行の内容が変更される
+
+
+
+##使用するソフトウェア一覧
+####アプリ
+* VScode(統合開発用ツール)
+* Python3.7.6
+* LINENotify
+* MongoDB
+* MongoDB Compass
+* Github
+* git 
+* heroku
+
+####pythonで使用するライブラリ一覧
+* dateTime
+* Flask
+* flask-Cors
+* pymongo
+* requests
+* slackClient
+
+#使用するDB一覧
+* Kome_Info(DB)
+    * registration(table) * 今までみたドラマ一覧記録
+    * reservation(table) * これから見るドラマ一覧記録
