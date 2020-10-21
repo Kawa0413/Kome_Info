@@ -87,7 +87,6 @@ Vue.component('reserve-field', {
                         h1{color: #00a0dc}
                     </style>
                     <h2>Reservation</h2>
-                    <br>
                     <label>ドラマタイトル</label>
                     <input type="text" v-model="name">
                     <span v-if="error_name" style="color:red">タイトル名が入力されていません</span>

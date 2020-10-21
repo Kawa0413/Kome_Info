@@ -25,6 +25,24 @@
                 }
             h2{color: #00a0dc}
 
+            .wrapper {
+                min-height: 100vh;
+                position: relative;/*←相対位置*/
+                padding-bottom: 120px;/*←footerの高さ*/
+                box-sizing: border-box;/*←全て含めてmin-height:100vhに*/
+                }
+
+            footer {
+                width: 100%;
+                background-color: #e9f5fa;
+                color: #00a0dc;
+                text-align: center;
+                padding: 15px 0;
+
+            position: absolute;/*←絶対位置*/
+                bottom: 0; /*下に固定*/
+                }
+
         </style>
 
         <div id="app" v-cloak>
@@ -38,6 +56,12 @@
             </header>
             <router-view></router-view>
 
+            <footer>
+                <p>Registration:　これまで見たドラマの記録一覧　Reservation：　これから見るドラマの記録一覧</p>
+                <p>CLEAR: 入力欄初期化   GET: 一覧表示   ADD: 入力内容を一覧に追加   FIX:変更したい内容を入力し変更したい行のFIXボタンを押すことによる内容の変更</p>
+                
+                
+            </footer>
 
         </div>
         <!-- 動作の後からインポートしてやらないといけないｊｓファイルもある-->
